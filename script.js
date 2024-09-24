@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Botón de borrar
             const borrarBtn = document.createElement('button');
-            borrarBtn.innerText = 'Borrar'; // Puedes reemplazar este texto con un icono
+            borrarBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'; // Icono de borrar
             borrarBtn.classList.add('borrar-btn');
             borrarBtn.addEventListener('click', function(event) {
                 event.stopPropagation(); // Evitar que se dispare el click en el li
