@@ -142,3 +142,24 @@ ul#listaNotas li:hover {
 .toggle-theme-btn:hover {
     background-color: #0056b3;
 }
+
+/* Añadir un cambio de color al pasar el ratón sobre los botones */
+.modal-content button:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+
+.borrar-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.borrar-btn i {
+    color: red;
+    font-size: 1.2em;
+}
+
+.borrar-btn:hover i {
+    color: darkred;
+}
