@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const compartirBtn = document.getElementById('compartirBtn');
     const notaTextarea = document.getElementById('nota');
     const tituloInput = document.getElementById('tituloNota');
+    const archivoInput = document.getElementById('archivoNota');
     const toggleThemeBtn = document.getElementById('toggleThemeBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
 
     let notasGuardadas = JSON.parse(localStorage.getItem('notas')) || [];
     let notaActualIndex = null;
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         notaActualIndex = null;
         notaTextarea.value = '';
         tituloInput.value = '';
+        archivoInput.value = '';
         notaModal.style.display = 'flex';
     });
 
@@ -29,14 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
     guardarBtn.addEventListener('click', function() {
         const titulo = tituloInput.value;
         const nota = notaTextarea.value;
+        const archivo = archivoInput.files[0];
+
         if (titulo && nota) {
             if (notaActualIndex === null) {
-                guardarNota(titulo, nota);
+                guardarNota(titulo, nota, archivo);
             } else {
-                editarNota(notaActualIndex, titulo, nota);
+                editarNota(notaActualIndex, titulo, nota, archivo);
             }
             notaTextarea.value = '';
             tituloInput.value = '';
+            archivoInput.value = '';
             notaModal.style.display = 'none';
             cargarNotas();
         } else {
@@ -47,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     limpiarBtn.addEventListener('click', function() {
         notaTextarea.value = '';
         tituloInput.value = '';
+        archivoInput.value = '';
     });
 
     compartirBtn.addEventListener('click', function() {
@@ -64,21 +71,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para borrar solo la nota seleccionada
     function borrarNota(index) {
-        if (confirm('¿Estás seguro de borrar la nota?')) { // Mensaje actualizado
+        if (confirm('¿Estás seguro de que deseas borrar esta nota?')) {
             notasGuardadas.splice(index, 1); // Eliminar la nota del array
             localStorage.setItem('notas', JSON.stringify(notasGuardadas));
             cargarNotas(); // Recargar las notas
         }
     }
 
-    function guardarNota(titulo, nota) {
-        notasGuardadas.unshift({ titulo: titulo, contenido: nota, fecha: new Date() });
+    function guardarNota(titulo, nota, archivo) {
+        const notaObj = { 
+            titulo: titulo, 
+            contenido: nota, 
+            fecha: new Date(),
+            archivo: archivo ? URL.createObjectURL(archivo) : null // Guardar la URL del archivo
+        };
+        notasGuardadas.unshift(notaObj);
         localStorage.setItem('notas', JSON.stringify(notasGuardadas));
     }
 
-    function editarNota(index, titulo, nota) {
+    function editarNota(index, titulo, nota, archivo) {
         notasGuardadas[index].titulo = titulo;
         notasGuardadas[index].contenido = nota;
+        if (archivo) {
+            notasGuardadas[index].archivo = URL.createObjectURL(archivo); // Actualizar el archivo
+        }
         localStorage.setItem('notas', JSON.stringify(notasGuardadas));
     }
 
@@ -88,9 +104,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const li = document.createElement('li');
             li.innerHTML = `<strong>${notaObj.titulo}</strong>: ${notaObj.contenido.substring(0, 20)}...`;
 
+            // Añadir enlace para abrir el archivo si existe
+            if (notaObj.archivo) {
+                const enlaceArchivo = document.createElement('a');
+                enlaceArchivo.href = notaObj.archivo;
+                enlaceArchivo.target = '_blank';
+                enlaceArchivo.innerText = 'Ver Archivo';
+                enlaceArchivo.style.display = 'block'; // Para que se muestre como bloque
+                li.appendChild(enlaceArchivo);
+            }
+
             // Botón de borrar
             const borrarBtn = document.createElement('button');
-            borrarBtn.innerHTML = '<i class="fas fa-trash-alt"></i>'; // Icono de borrar
+            borrarBtn.innerText = 'Borrar'; // Puedes reemplazar este texto con un icono
             borrarBtn.classList.add('borrar-btn');
             borrarBtn.addEventListener('click', function(event) {
                 event.stopPropagation(); // Evitar que se dispare el click en el li
@@ -118,5 +144,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cambiar entre modo claro y oscuro
     toggleThemeBtn.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
+    });
+
+    // Modo pantalla completa
+    fullscreenBtn.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error al activar el modo de pantalla completa: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
     });
 });
