@@ -1,327 +1,38 @@
 <!DOCTYPE html>
-<head><title>developer</title>
-
-<style>
-*{padding: 0;
-margin: 0px;
-
-}
-
-body{width:100%; height: 100%; background: #ffffff;}
-  
- .section01{margin: 2px;  height: 150px; width:80%; }
-.section01 img{ height: 12px; float: right;} 
-  
-.container{ text-align: center; margin: 2px;
-height: 120px; width:100%;}
-
-#section1{ text-align: center; margin: 15px;
-width:100px; height: 100px; float: right; }
-#section1 img{  border:  1px solid black;  border-radius: 10px;  text-align: center;}
-
-  
-#section2{margin: 10px;
-width:59%; height: 98px;}
-
-#section3 {border: 1px solid black;
-width:59%; height: 40px; display: flex;  }
-
-.nav{width:100%; height: 30px; text-align: center;}
-
-.nav a{display: block; text-decoration: none;
-    font-size: 16px; /* Tamaño de letra */
-    text-transform: uppercase; /* Letras en mayúscula */
-    background: #6B3618; /* Color de fondo */
-    padding: 10px 15px; /* Relleno */
-    margin: 10px;
-    color: #FFD059; /* Color de texto */
-    border-bottom: solid 2px #FFD059; /* Borde inferior */
-    border-radius: 10px; color: #ffffff;  }
-
-  #section03{
-width:100%; height: 49px; display: flex;}
-#section08{ width:10%;}
-  
-#section04{ width:50%; height: 49px; padding: 2px; 49px; float: right; margin: 5px; text-align: center;}
-
-#section05{width:50%; height: 49px; float: right; margin: 10px; text-align: center;}
-#section05 a{display: block; text-decoration: none;
-    font-size: 14px; /* Tamaño de letra */
-    text-transform: uppercase; /* Letras en mayúscula */
-    background: #6B3618; /* Color de fondo */
-    padding: 10px 15px; /* Relleno */
-    margin: 1px;
-    color: #FFD059; /* Color de texto */
-    border-bottom: solid 2px #FFD059; /* Borde inferior */
-    border-radius: 10px; color: #ffffff;  }
-
-  
-.main{   width:100%;  max-height: 220px;  display: flex; overflow-x: auto;}
-#section6 img{ border: 1px solid black; border-radius: 10px; height: 200px; width: 130px;  display: flex;}
-#section6{ margin: 5px; border-radius: 10px;  display: flex;}
-#section66 img{ border: 1px solid black; border-radius: 10px; height: 200px; width: 300px;  display: flex;}
-#section66{ margin: 5px; border-radius: 10px;  display: flex;}
-#section6 video{ border: 1px solid black; border-radius: 10px; height: 200px; width: 300px;  display: flex;}
-
-.footer{ width:90%; height: 100%; margin: 5px;  }
-p{padding: 10px; }
-  
-.version{ width:90%; height: 40px; }
-   
- 
-
-header1{display: flex; width:100%;}
-
-.logo1{ padding: 15px; width:10px;}
-.log1 { height 30px; width:30px; }
-.log1 img{  height: 30px; width:30px;}
-
-
-.nombre1{ padding: 20px; height 30px; width:100%;}
-.nombre1 p{font-size: 12px; }
-  
-  header{ display: flex; height 60px; width:100%;}
-
-.logo{ padding: 15px; width:70px;}
-.log {height 60px; width:60px; text-align: center;}
-.log img{border:1px solid black; border-radius: 10px; height: 60px; width:60px;}
-
-.nombre{height 50px; width:100%;}
-.nombre p{font-size: 12px; }
-
-  
-</style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc de Notas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
-  
-<div class="container">
-  
-<section id="section1"><img src="1.png" width="80"  height="80">
-</section>
 
-<section id="section2">
-<center><font size="4"><b>    Porntox  </b></font><br> 
-<font size="2" color="green"><b>Es un proyecto de biblioteca fantasma de intercambio de videos </b></font>
-<br> <font size="2">Verificado por <b>Virus Total</b></font></center>
-<font size="2"><b>Versión:  2.4.192.0_alfa(24) <br>
-Tamaño:  19.53 MB</b></font>
-</section>
-  
-</div>
-  
-<div class="nav"> 
-<a href="  PornTox_V2.4.192.0_Alfa.apk   "  download="  PornTox_V2.4.192.0_Alfa     " ><center>Descargar</center></a>
-</div>
-  
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v15.0" nonce="nahrbfKH"></script>
-  
-<section id="section03">
-<div id="section08">
-</div>
-<div id="section04"><div class="rw-ui-container"></div>
-</div>
-<div id="section05"><a href="#comentarios" ><center>Comentarios</center></a> 
-</div>
-</section>
-  
-<div class="main">
-<section id="section6">
-<img src="22.jpg" >
-</section>
-<section id="section6">
-<img src="22.jpg">
-</section>
-<section id="section6">
-<img src="22.jpg"  >
-</section>
-<section id="section6">
-<img src="22.jpg" >
-</section>
-<section id="section6">
-<img src="22.jpg"  >
-</section>
-<section id="section6">
-<img src="22.jpg" >
-</section>
-</div>
+    <div class="container">
+        <h1>Notas Guardadas</h1>
+        <ul id="listaNotas"></ul>
 
-<div class="footer">
-<p><pre>
-<h2>  Descripción:</h2></pre><br>
- Porntox (abreviado como p-tox, anteriormente Global Porn) es un proyecto de biblioteca fantasma de intercambio de videos con acceso
-a contenido para adultos de todo género. Se originó como un espejo de Pornhub, y la mayoría de sus videos son de Todas las web con contenido para adultos.
-  Sin embargo, algunos de ellos son subidos Anonima Mente directamente a su App por individuos y no están incluidos en la colección de PornTox. Las personas 
-  también pueden contribuir al repositorio de la App para hacer que la visualización sea accesible para las personas que utilizan la App.<br><br>
+        <!-- Botón flotante para agregar nota -->
+        <button id="agregarNotaBtn" class="floating-btn">+</button>
 
-PornTox fundada en el año 2021, En noviembre de 2022, se encontraba en la posición número 73 en el listado mundial del top 100 de App de internet
-  del ranking global.2 Con más de 30 millones de usuarios es la primera App de este estilo más visitada del mundo, por delante de XVideos y Pornhub.<br><br>
+        <!-- Botón para cambiar tema -->
+        <button id="toggleThemeBtn" class="toggle-theme-btn">Tema Oscuro</button>
+    </div>
 
-PornTox da a sus usuarios la función de Subir videos Anonima..
-</p>
-</div>
-  
+    <!-- Modal para agregar o editar notas -->
+    <div id="notaModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <input id="tituloNota" type="text" placeholder="Título de la nota" />
+            <textarea id="nota" placeholder="Escribe tu nota aquí..." oninput="ajustarAltura(this)"></textarea>
+            <div class="buttons">
+                <button id="guardarBtn">Guardar Nota</button>
+                <button id="limpiarBtn">Limpiar Nota</button>
+                <button id="compartirBtn">Compartir Nota</button>
+            </div>
+        </div>
+    </div>
 
-
-<div class="footer">
-<p><pre>
-<h4>  Datos del desarrollador</h4></pre>
-</div>
-
-
-<header1>
-<div class="logo1">
-<div class="log1">
-<img src=" desarrollador.png" >
-</div>
-</div>
-<div class="nombre1">
-PornTox.com
-</div>
-</header1>
-
-<header1>
-<div class="logo1">
-<div class="log1">
-<img src="email.png">
-</div>
-</div>
-<div class="nombre1">
-Porntox.support.com
-</div>
-</header1>
-
-<header1>
-<div class="logo1">
-<div class="log1">
-<a href="https://www.http//porntox.com/ "><img src="web.png" ></a>
-</div>
-</div>
-<div class="nombre1">
-Web
-</div>
-</header1> 
-
-<div class="version">
-<pre><h3>     Otras Versiones </h3>
-</pre>
-</div> 
-
-<header>
-<div class="logo">
-<div class="log">
-<a href="PORNTOX_Android-life.apk" download="PORNTOX_Android-life" ><img src="1.png" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-PornTox
-versión  1.6.108.0(22)
-tamaño   15.96 MB
-</p>
-</pre>
-</div>
-</header>  
-
-  
-   <header>
-<div class="logo">
-<div class="log">
-<a href="Porntox_developer-shop.apk" download="Porntox_developer-shop" ><img src="1.png" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-PornTox
-versión  1.5.107.0
-tamaño   15.96 MB
-</p>
-</pre>
-</div>
-</header>  
-  
-  
-   <header>
-<div class="logo">
-<div class="log">
-<a href="Porntox_V1.3.0.0_developer-shop.apk.apk" download="Porntox_V1.3.0.0_developer-shop.apk" ><img src="1.png" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-PornTox
-versión  1.4.106.0
-tamaño   15.18 MB
-</p>
-</pre>
-</div>
-</header> 
-  
-  <header>
-<div class="logo">
-<div class="log">
-<a href="Porntox_V1.3.0.0_developer-shop.apk.apk" download="Porntox_V1.3.0.0_developer-shop.apk" ><img src="1.png" ></a>
-</div>
-</div>
-<div class="nombre">
-<pre><p>
-PornTox
-versión  1.3.0.0
-tamaño   14.0 MB
-</p>
-</pre>
-</div>
-</header> 
-
-<div id="comentarios"></div>
-
-  
-  
-  
- <script type="text/javascript">(function(d, t, e, m){
-    
-    // Async Rating-Widget initialization.
-    window.RW_Async_Init = function(){
-                
-        RW.init({
-            huid: "489636",
-            uid: "5b4004c165e23233b1355674625abdce",
-            source: "website",
-            options: {
-                "advanced": {
-                    "layout": {
-                        "align": {
-                            "hor": "center",
-                            "ver": "top"
-                        }
-                    },
-                    "font": {
-                        "size": "14px"
-                    },
-                    "text": {
-                        "rateAwful": "No gusta "
-                    }
-                },
-                "size": "medium",
-                "lng": "es",
-                "style": "oxygen",
-                "isDummy": false
-            } 
-        });
-        RW.render();
-    };
-        // Append Rating-Widget JavaScript library.
-    var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
-        l = d.location, ck = "Y" + t.getFullYear() + 
-        "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
-        f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
-        a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
-    if (d.getElementById(id)) return;              
-    rw = d.createElement(e);
-    rw.id = id; rw.async = true; rw.type = "text/javascript";
-    rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
-    s.parentNode.insertBefore(rw, s);
-    }(document, new Date(), "script", "rating-widget.com/"));</script> 
+    <script src="script.js"></script>
 </body>
 </html>
