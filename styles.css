@@ -91,7 +91,7 @@ body.dark-mode ul#listaNotas li a {
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: #fff; /* Fondo blanco siempre */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -110,24 +110,13 @@ body.dark-mode ul#listaNotas li a {
     padding: 10px;
     border: 1px solid #ccc;
     color: #333; /* Color oscuro fijo */
+    background-color: #fff; /* Fondo blanco siempre */
 }
 
 .modal-content textarea {
     resize: none;
     min-height: 100px;
     max-height: 300px;
-}
-
-/* Modo oscuro para el modal, pero con texto oscuro */
-body.dark-mode .modal-content {
-    background-color: #555;
-}
-
-body.dark-mode .modal-content input,
-body.dark-mode .modal-content textarea {
-    background-color: #666;
-    color: #333; /* Mantener el texto oscuro */
-    border-color: #777;
 }
 
 .modal-content .buttons {
@@ -203,4 +192,17 @@ body.dark-mode .modal-content textarea {
 
 #fullscreenBtn:hover {
     background-color: #0056b3;
+}
+
+/* Evitar que el modal cambie en modo oscuro */
+body.dark-mode .modal-content {
+    background-color: #fff; /* Fondo claro siempre */
+    color: #333; /* Texto oscuro siempre */
+}
+
+body.dark-mode .modal-content input,
+body.dark-mode .modal-content textarea {
+    background-color: #fff; /* Fondo claro siempre */
+    color: #333; /* Texto oscuro siempre */
+    border-color: #ccc; /* Bordes claros siempre */
 }
