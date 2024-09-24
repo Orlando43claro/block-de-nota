@@ -42,16 +42,16 @@ ul#listaNotas li:hover {
     background-color: #e0e0e0;
 }
 
-/* Modo oscuro para las notas: mantenemos el color del texto oscuro */
+/* Modo oscuro para las notas */
 body.dark-mode ul#listaNotas li {
-    background-color: #444;
-    color: #333; /* El texto sigue siendo oscuro */
-    border-color: #555;
+    background-color: #444; /* Fondo oscuro */
+    color: #fff; /* Color del texto claro */
+    border-color: #555; /* Color del borde más claro */
 }
 
 /* Estilo del enlace en modo oscuro */
 body.dark-mode ul#listaNotas li a {
-    color: #00bfff;
+    color: #00bfff; /* Color del enlace */
 }
 
 /* Botón flotante para agregar notas */
@@ -205,4 +205,13 @@ body.dark-mode .modal-content textarea {
     background-color: #fff; /* Fondo claro siempre */
     color: #333; /* Texto oscuro siempre */
     border-color: #ccc; /* Bordes claros siempre */
+}
+
+/* Títulos y contenido de las notas siempre oscuros */
+ul#listaNotas li strong {
+    color: #333; /* Color oscuro para el título */
+}
+
+ul#listaNotas li {
+    color: #333; /* Color oscuro para el contenido */
 }
