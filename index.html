@@ -26,11 +26,13 @@
             <span class="close">&times;</span>
             <input id="tituloNota" type="text" placeholder="Título de la nota" />
             <textarea id="nota" placeholder="Escribe tu nota aquí..." oninput="ajustarAltura(this)"></textarea>
+            <input id="archivoNota" type="file" accept="image/*,.pdf,.doc,.docx,.txt" />
             <div class="buttons">
                 <button id="guardarBtn"><i class="fas fa-save"></i></button>
                 <button id="limpiarBtn"><i class="fas fa-eraser"></i></button>
                 <button id="compartirBtn"><i class="fas fa-share-alt"></i></button>
-                <button id="borrarBtn" style="display: none;"><i class="fas fa-trash-alt"></i></button> <!-- Botón de borrar oculto inicialmente -->
+                <button id="borrarBtn"><i class="fas fa-trash-alt"></i></button>
+                <button id="fullscreenBtn"><i class="fas fa-expand"></i></button> <!-- Botón para pantalla completa -->
             </div>
         </div>
     </div>
