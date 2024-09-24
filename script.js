@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para borrar solo la nota seleccionada
     function borrarNota(index) {
-        if (confirm('¿Estás seguro de que deseas borrar solo esta nota?')) {
+        if (confirm('¿Estás seguro de borrar la nota?')) { // Mensaje actualizado
             notasGuardadas.splice(index, 1); // Eliminar la nota del array
             localStorage.setItem('notas', JSON.stringify(notasGuardadas));
             cargarNotas(); // Recargar las notas
