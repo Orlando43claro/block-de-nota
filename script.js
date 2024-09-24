@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const archivoInput = document.getElementById('archivoNota');
     const toggleThemeBtn = document.getElementById('toggleThemeBtn');
     const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const temaSelect = document.getElementById('temaSelect');
 
     let notasGuardadas = JSON.parse(localStorage.getItem('notas')) || [];
     let notaActualIndex = null;
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             archivoInput.value = '';
             notaModal.style.display = 'none';
             cargarNotas();
+            mostrarNotificacion(titulo); // Mostrar notificación
         } else {
             alert('Debes completar el título y la nota.');
         }
@@ -69,12 +71,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Función para borrar solo la nota seleccionada
+    // Función para mostrar notificación
+    function mostrarNotificacion(titulo) {
+        if (Notification.permission === 'granted') {
+            new Notification('Nota guardada', {
+                body: `Se ha guardado la nota: ${titulo}`,
+            });
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    new Notification('Nota guardada', {
+                        body: `Se ha guardado la nota: ${titulo}`,
+                    });
+                }
+            });
+        }
+    }
+
     function borrarNota(index) {
         if (confirm('¿Estás seguro de que deseas borrar esta nota?')) {
-            notasGuardadas.splice(index, 1); // Eliminar la nota del array
+            notasGuardadas.splice(index, 1);
             localStorage.setItem('notas', JSON.stringify(notasGuardadas));
-            cargarNotas(); // Recargar las notas
+            cargarNotas();
         }
     }
 
@@ -83,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
             titulo: titulo, 
             contenido: nota, 
             fecha: new Date(),
-            archivo: archivo ? URL.createObjectURL(archivo) : null // Guardar la URL del archivo
+            archivo: archivo ? URL.createObjectURL(archivo) : null 
         };
         notasGuardadas.unshift(notaObj);
         localStorage.setItem('notas', JSON.stringify(notasGuardadas));
@@ -93,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         notasGuardadas[index].titulo = titulo;
         notasGuardadas[index].contenido = nota;
         if (archivo) {
-            notasGuardadas[index].archivo = URL.createObjectURL(archivo); // Actualizar el archivo
+            notasGuardadas[index].archivo = URL.createObjectURL(archivo);
         }
         localStorage.setItem('notas', JSON.stringify(notasGuardadas));
     }
@@ -104,23 +122,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const li = document.createElement('li');
             li.innerHTML = `<strong>${notaObj.titulo}</strong>: ${notaObj.contenido.substring(0, 20)}...`;
 
-            // Añadir enlace para abrir el archivo si existe
             if (notaObj.archivo) {
                 const enlaceArchivo = document.createElement('a');
                 enlaceArchivo.href = notaObj.archivo;
                 enlaceArchivo.target = '_blank';
                 enlaceArchivo.innerText = 'Ver Archivo';
-                enlaceArchivo.style.display = 'block'; // Para que se muestre como bloque
+                enlaceArchivo.style.display = 'block';
                 li.appendChild(enlaceArchivo);
             }
 
-            // Botón de borrar
             const borrarBtn = document.createElement('button');
             borrarBtn.innerText = 'Borrar'; // Puedes reemplazar este texto con un icono
             borrarBtn.classList.add('borrar-btn');
             borrarBtn.addEventListener('click', function(event) {
-                event.stopPropagation(); // Evitar que se dispare el click en el li
-                borrarNota(index); // Llamar a la función de borrar
+                event.stopPropagation();
+                borrarNota(index);
             });
 
             li.addEventListener('click', function() {
@@ -130,23 +146,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 notaModal.style.display = 'flex';
             });
 
-            li.appendChild(borrarBtn); // Agregar el botón de borrar a la lista
+            li.appendChild(borrarBtn);
             listaNotas.appendChild(li);
         });
     }
 
-    // Ajustar la altura del textarea
     window.ajustarAltura = function(textarea) {
-        textarea.style.height = 'auto'; // Reseteamos la altura
-        textarea.style.height = (textarea.scrollHeight) + 'px'; // Ajustamos a su contenido
+        textarea.style.height = 'auto';
+        textarea.style.height = (textarea.scrollHeight) + 'px';
     };
 
-    // Cambiar entre modo claro y oscuro
     toggleThemeBtn.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
     });
 
-    // Modo pantalla completa
+    temaSelect.addEventListener('change', function() {
+        const tema = temaSelect.value;
+        document.body.className = tema; // Cambiar la clase del cuerpo según la selección
+    });
+
     fullscreenBtn.addEventListener('click', function() {
         if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen().catch(err => {
