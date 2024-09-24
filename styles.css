@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +7,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Modo oscuro del body */
 body.dark-mode {
     background-color: #333;
     color: #fff;
@@ -19,6 +21,7 @@ h1 {
     text-align: center;
 }
 
+/* Lista de notas en modo claro */
 ul#listaNotas {
     list-style: none;
     padding: 0;
@@ -27,6 +30,7 @@ ul#listaNotas {
 
 ul#listaNotas li {
     background-color: #f0f0f0;
+    color: #333; /* Color oscuro fijo para el texto */
     padding: 10px;
     margin: 10px 0;
     border-radius: 4px;
@@ -38,30 +42,19 @@ ul#listaNotas li:hover {
     background-color: #e0e0e0;
 }
 
-/* Colores en modo claro */
-ul#listaNotas li {
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-}
-
-/* Colores en modo oscuro */
+/* Modo oscuro para las notas: mantenemos el color del texto oscuro */
 body.dark-mode ul#listaNotas li {
     background-color: #444;
-    color: #fff; /* Cambia el color del texto al blanco en modo oscuro */
-    border-color: #555; /* Bordes en modo oscuro */
+    color: #333; /* El texto sigue siendo oscuro */
+    border-color: #555;
 }
 
-/* Colores del enlace para los archivos en modo oscuro */
+/* Estilo del enlace en modo oscuro */
 body.dark-mode ul#listaNotas li a {
-    color: #00bfff; /* Un color más visible en modo oscuro */
+    color: #00bfff;
 }
 
-
+/* Botón flotante para agregar notas */
 .floating-btn {
     position: fixed;
     bottom: 20px;
@@ -83,6 +76,7 @@ body.dark-mode ul#listaNotas li a {
     background-color: #0056b3;
 }
 
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -107,6 +101,7 @@ body.dark-mode ul#listaNotas li a {
     text-align: center;
 }
 
+/* Estilos de los inputs y el textarea */
 .modal-content input,
 .modal-content textarea {
     width: 100%;
@@ -114,6 +109,7 @@ body.dark-mode ul#listaNotas li a {
     border-radius: 4px;
     padding: 10px;
     border: 1px solid #ccc;
+    color: #333; /* Color oscuro fijo */
 }
 
 .modal-content textarea {
@@ -122,11 +118,24 @@ body.dark-mode ul#listaNotas li a {
     max-height: 300px;
 }
 
+/* Modo oscuro para el modal, pero con texto oscuro */
+body.dark-mode .modal-content {
+    background-color: #555;
+}
+
+body.dark-mode .modal-content input,
+body.dark-mode .modal-content textarea {
+    background-color: #666;
+    color: #333; /* Mantener el texto oscuro */
+    border-color: #777;
+}
+
 .modal-content .buttons {
     display: flex;
     justify-content: space-around;
 }
 
+/* Estilos de los botones dentro del modal */
 .modal-content button {
     padding: 10px;
     border: none;
@@ -143,6 +152,7 @@ body.dark-mode ul#listaNotas li a {
     background-color: #0056b3;
 }
 
+/* Botón de cerrar modal */
 .modal-content .close {
     position: absolute;
     top: 10px;
@@ -151,6 +161,7 @@ body.dark-mode ul#listaNotas li a {
     cursor: pointer;
 }
 
+/* Botón para cambiar el tema */
 .toggle-theme-btn {
     position: fixed;
     top: 20px;
@@ -167,23 +178,29 @@ body.dark-mode ul#listaNotas li a {
     background-color: #0056b3;
 }
 
-/* Añadir un cambio de color al pasar el ratón sobre los botones */
-.modal-content button:hover {
-    background-color: #0056b3;
-    transition: background-color 0.3s ease;
-}
-
+/* Borrar botón de notas */
 .borrar-btn {
     background-color: transparent;
     border: none;
+    color: red;
+    font-size: 16px;
     cursor: pointer;
 }
 
-.borrar-btn i {
-    color: red;
-    font-size: 1.2em;
+.borrar-btn:hover {
+    color: darkred;
 }
 
-.borrar-btn:hover i {
-    color: darkred;
+/* Pantalla completa */
+#fullscreenBtn {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#fullscreenBtn:hover {
+    background-color: #0056b3;
 }
