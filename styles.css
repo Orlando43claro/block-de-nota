@@ -30,7 +30,7 @@ ul#listaNotas {
 
 ul#listaNotas li {
     background-color: #f0f0f0;
-    color: #333; /* Color oscuro fijo para el texto */
+    color: #333; /* Color oscuro fijo para el texto en modo claro */
     padding: 10px;
     margin: 10px 0;
     border-radius: 4px;
@@ -109,7 +109,7 @@ body.dark-mode ul#listaNotas li a {
     border-radius: 4px;
     padding: 10px;
     border: 1px solid #ccc;
-    color: #333; /* Color oscuro fijo */
+    color: #333; /* Color oscuro fijo en modo claro */
     background-color: #fff; /* Fondo blanco siempre */
 }
 
@@ -194,7 +194,7 @@ body.dark-mode ul#listaNotas li a {
     background-color: #0056b3;
 }
 
-/* Evitar que el modal cambie en modo oscuro */
+/* Estilos para el modal que se mantiene igual */
 body.dark-mode .modal-content {
     background-color: #fff; /* Fondo claro siempre */
     color: #333; /* Texto oscuro siempre */
@@ -207,11 +207,20 @@ body.dark-mode .modal-content textarea {
     border-color: #ccc; /* Bordes claros siempre */
 }
 
-/* Títulos y contenido de las notas siempre oscuros */
+/* Títulos y contenido de las notas siempre claros */
 ul#listaNotas li strong {
-    color: #fff; /* Cambiar a blanco en modo oscuro */
+    color: #333; /* Cambia a negro en modo claro */
 }
 
 ul#listaNotas li {
+    color: #333; /* Cambia a negro en modo claro */
+}
+
+/* Cambiar colores de los títulos y notas en modo oscuro */
+body.dark-mode ul#listaNotas li strong {
+    color: #fff; /* Cambiar a blanco en modo oscuro */
+}
+
+body.dark-mode ul#listaNotas li {
     color: #fff; /* Cambiar a blanco en modo oscuro */
 }
