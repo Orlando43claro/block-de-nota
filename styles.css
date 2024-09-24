@@ -209,9 +209,9 @@ body.dark-mode .modal-content textarea {
 
 /* Títulos y contenido de las notas siempre oscuros */
 ul#listaNotas li strong {
-    color: #333; /* Color oscuro para el título */
+    color: #fff; /* Cambiar a blanco en modo oscuro */
 }
 
 ul#listaNotas li {
-    color: #333; /* Color oscuro para el contenido */
+    color: #fff; /* Cambiar a blanco en modo oscuro */
 }
