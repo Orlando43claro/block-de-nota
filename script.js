@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const guardarBtn = document.getElementById('guardarBtn');
     const limpiarBtn = document.getElementById('limpiarBtn');
     const compartirBtn = document.getElementById('compartirBtn');
-    const borrarBtn = document.getElementById('borrarBtn');
     const notaTextarea = document.getElementById('nota');
     const tituloInput = document.getElementById('tituloNota');
     const toggleThemeBtn = document.getElementById('toggleThemeBtn');
@@ -63,13 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    borrarBtn.addEventListener('click', function() {
-        if (confirm('¿Estás seguro de que deseas borrar todas las notas?')) {
-            notasGuardadas = [];
-            localStorage.removeItem('notas');
-            cargarNotas();
+    // Función para borrar solo la nota seleccionada
+    function borrarNota(index) {
+        if (confirm('¿Estás seguro de que deseas borrar esta nota?')) {
+            notasGuardadas.splice(index, 1); // Eliminar la nota del array
+            localStorage.setItem('notas', JSON.stringify(notasGuardadas));
+            cargarNotas(); // Recargar las notas
         }
-    });
+    }
 
     function guardarNota(titulo, nota) {
         notasGuardadas.unshift({ titulo: titulo, contenido: nota, fecha: new Date() });
@@ -86,13 +86,25 @@ document.addEventListener('DOMContentLoaded', function() {
         listaNotas.innerHTML = '';
         notasGuardadas.forEach((notaObj, index) => {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${notaObj.titulo}</strong>: ${notaObj.contenido.substring(0, 20)}...`; // Título en negrita
+            li.innerHTML = `<strong>${notaObj.titulo}</strong>: ${notaObj.contenido.substring(0, 20)}...`;
+
+            // Botón de borrar
+            const borrarBtn = document.createElement('button');
+            borrarBtn.innerText = 'Borrar'; // Puedes reemplazar este texto con un icono
+            borrarBtn.classList.add('borrar-btn');
+            borrarBtn.addEventListener('click', function(event) {
+                event.stopPropagation(); // Evitar que se dispare el click en el li
+                borrarNota(index); // Llamar a la función de borrar
+            });
+
             li.addEventListener('click', function() {
                 notaActualIndex = index;
                 tituloInput.value = notaObj.titulo;
                 notaTextarea.value = notaObj.contenido;
-                notaModal.style.display = 'flex';  // Mostrar modal para editar la nota
+                notaModal.style.display = 'flex';
             });
+
+            li.appendChild(borrarBtn); // Agregar el botón de borrar a la lista
             listaNotas.appendChild(li);
         });
     }
