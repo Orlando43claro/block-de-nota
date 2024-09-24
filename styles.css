@@ -38,6 +38,30 @@ ul#listaNotas li:hover {
     background-color: #e0e0e0;
 }
 
+/* Colores en modo claro */
+ul#listaNotas li {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+/* Colores en modo oscuro */
+body.dark-mode ul#listaNotas li {
+    background-color: #444;
+    color: #fff; /* Cambia el color del texto al blanco en modo oscuro */
+    border-color: #555; /* Bordes en modo oscuro */
+}
+
+/* Colores del enlace para los archivos en modo oscuro */
+body.dark-mode ul#listaNotas li a {
+    color: #00bfff; /* Un color más visible en modo oscuro */
+}
+
+
 .floating-btn {
     position: fixed;
     bottom: 20px;
