@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const guardarBtn = document.getElementById('guardarBtn');
     const limpiarBtn = document.getElementById('limpiarBtn');
     const compartirBtn = document.getElementById('compartirBtn');
+    const borrarBtn = document.getElementById('borrarBtn');
     const notaTextarea = document.getElementById('nota');
     const tituloInput = document.getElementById('tituloNota');
     const toggleThemeBtn = document.getElementById('toggleThemeBtn');
@@ -62,6 +63,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    borrarBtn.addEventListener('click', function() {
+        if (confirm('¿Estás seguro de que deseas borrar todas las notas?')) {
+            notasGuardadas = [];
+            localStorage.removeItem('notas');
+            cargarNotas();
+        }
+    });
+
     function guardarNota(titulo, nota) {
         notasGuardadas.unshift({ titulo: titulo, contenido: nota, fecha: new Date() });
         localStorage.setItem('notas', JSON.stringify(notasGuardadas));
@@ -77,24 +86,25 @@ document.addEventListener('DOMContentLoaded', function() {
         listaNotas.innerHTML = '';
         notasGuardadas.forEach((notaObj, index) => {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${notaObj.titulo}</strong>: ${notaObj.contenido.substring(0, 20)}...`;
+            li.innerHTML = `<strong>${notaObj.titulo}</strong>: ${notaObj.contenido.substring(0, 20)}...`; // Título en negrita
             li.addEventListener('click', function() {
                 notaActualIndex = index;
                 tituloInput.value = notaObj.titulo;
                 notaTextarea.value = notaObj.contenido;
-                notaModal.style.display = 'flex';
+                notaModal.style.display = 'flex';  // Mostrar modal para editar la nota
             });
             listaNotas.appendChild(li);
         });
     }
 
+    // Ajustar la altura del textarea
     window.ajustarAltura = function(textarea) {
-        textarea.style.height = 'auto';
-        textarea.style.height = (textarea.scrollHeight) + 'px';
-    }
+        textarea.style.height = 'auto'; // Reseteamos la altura
+        textarea.style.height = (textarea.scrollHeight) + 'px'; // Ajustamos a su contenido
+    };
 
+    // Cambiar entre modo claro y oscuro
     toggleThemeBtn.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
-        toggleThemeBtn.textContent = document.body.classList.contains('dark-mode') ? 'Tema Claro' : 'Tema Oscuro';
     });
 });
